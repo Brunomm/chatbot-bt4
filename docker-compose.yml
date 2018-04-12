@@ -18,6 +18,8 @@ services:
     volumes:
       - bundle_cache:/bundle
       - '.:/chatbot'
+    environment:
+      - LANG=C.UTF-8
 
 volumes:
   postgres:
