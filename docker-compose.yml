@@ -1,19 +1,24 @@
-version: '2'
+version: '3'
 
 services:
   postgres:
     image: 'postgres:9.5'
     volumes:
       - 'postgres:/var/lib/postgresql/data'
-
   website:
+    build: .
+    # Dando nome aos bois
+    image: bootcamp-chatbot
     depends_on:
       - 'postgres'
-    build: .
+    # Comando default quando levantar o container
+    command: rackup config.ru -o 0.0.0.0
     ports:
       - '9292:9292'
     volumes:
-      - '.:/chatboot'
+      - bundle_cache:/bundle
+      - '.:/chatbot'
 
 volumes:
   postgres:
+  bundle_cache:
