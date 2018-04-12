@@ -24,6 +24,8 @@ ENV BUNDLE_PATH=/bundle \
     GEM_HOME=/bundle
 ENV PATH="${BUNDLE_BIN}:${PATH}"
 
+VOLUME /bundle
+
 # Instala a gem bundler para o novo PATH do BUNDLE
 RUN gem install bundler
 
